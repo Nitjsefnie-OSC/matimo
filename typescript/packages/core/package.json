@@ -21,7 +21,7 @@
     }
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node": ">=22.19.0",
     "pnpm": ">=8.0.0"
   },
   "scripts": {
@@ -80,7 +80,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@modelcontextprotocol/sdk": "^1.31.0",
     "@mozilla/readability": "^0.6.0",
     "axios": "^1.20.0",
     "docx": "^9.8.1",
