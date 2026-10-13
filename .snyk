@@ -1,0 +1,14 @@
+# Snyk policy file: https://docs.snyk.io/snyk-cli/test-for-vulnerabilities/the-.snyk-file
+version: v1.25.0
+ignore:
+  SNYK-JS-YAML-15765520:
+    - '*':
+        reason: >-
+          Accepted risk. yaml uncontrolled recursion (CVE-2026-33532, medium,
+          CVSS 5.3) is hard-pinned at yaml@2.3.4 by upstream @usebruno/cli@4.2.0
+          (latest release, no patched version). It only affects users who install
+          @matimo/bruno and parse deeply nested YAML. Revisit when
+          @usebruno/cli updates the pin.
+        expires: 2026-12-04T00:00:00.000Z
+        created: 2026-10-04T00:00:00.000Z
+patch: {}

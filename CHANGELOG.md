@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [typescript/v0.3.0] - 2026-10-13
+
+Node 22.19 or newer is now required. Node 18 and 20 are no longer supported.
+
+### ⚠️ Breaking changes
+- `engines.node` is now `>=22.19.0` in every `@matimo/*` package. The patched `undici` 8 needs it. `matimo doctor` checks for it. CI tests Node 22 and 24
+
+### ✨ Features
+- `@matimo/composio`: every generated tool takes `composio_toolkit_version` (default `latest`) and sends it as `version`. Composio v3 otherwise runs the stale base version `00000000_00`, which can call upstream APIs that no longer exist. Pass a dated version such as `20251027_00` to pin
+
+### 🔒 Security
+- `@modelcontextprotocol/sdk` ^1.31.0 (OAuth client could send credentials to an authorization server chosen by the MCP server)
+- Patched transitive advisories through `pnpm.overrides`: `proxy-addr` (critical), `handlebars` (2 critical, 1 moderate), `undici` (10 findings, now 8.11.2), `fast-uri`, `ip-address`, `hono` (>=4.13.7), `yaml` and `csv-parse` (both pinned by `@usebruno/cli`), and `uuid` ^14.0.3
+- Known and unfixed: `sprintf-js` (moderate, no patched release, via `mammoth`)
+
+### 🔧 Maintenance
+- Pinned the `@babel/core` override to ^7
+- `.snyk` accepts the `yaml` advisory pinned by `@usebruno/cli` 4.2.0 until 2026-12-04 (the new override should make this unnecessary)
+
+---
 ## [typescript/v0.2.0] - 2026-10-04
 
 Governance is now true by default: every tool call is governed the same way in both SDKs. Read

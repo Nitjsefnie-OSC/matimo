@@ -78,7 +78,7 @@ git commit -m "chore: release vX.Y.Z"
 ## Step 6 — Tag the release
 
 ```bash
-git tag vX.Y.Z
+git tag typescript/vX.Y.Z   # or python/vX.Y.Z; this repo tags each SDK separately
 ```
 
 Show the push command but **do not run it** — ask the user to confirm first:

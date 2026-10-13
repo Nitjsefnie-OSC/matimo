@@ -5,7 +5,7 @@ Execute your first Matimo tool in 5 minutes.
 ## Prerequisites
 
 - ✅ Matimo installed (`npm install matimo` — see [Installation](./installation.md))
-- ✅ Node.js v18+
+- ✅ Node.js v22.19+
 
 This guide uses `calculator`, one of the core tools that ship with Matimo.
 

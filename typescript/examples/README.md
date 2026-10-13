@@ -4,7 +4,7 @@
   <a href="https://discord.gg/3JPt4mxWDV"><img src="https://img.shields.io/badge/Discord-Join%20Chat-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a>
 </p>
 
-Runnable examples for `@matimo/core` 0.2.0 and the provider packages. Every tool is defined once in YAML and called three ways: directly (factory), through a `@tool` method (decorator), or by an LLM (LangChain). Write tools also have a `-with-approval` example.
+Runnable examples for `@matimo/core` 0.3.0 and the provider packages. Every tool is defined once in YAML and called three ways: directly (factory), through a `@tool` method (decorator), or by an LLM (LangChain). Write tools also have a `-with-approval` example.
 
 | Directory | What's in it |
 |-----------|--------------|
@@ -28,7 +28,7 @@ pnpm slack:decorator            # decorator pattern
 pnpm slack:langchain            # LangChain agent (needs OPENAI_API_KEY)
 ```
 
-Requirements: Node.js 18+, and the provider credentials for the examples you run (`.env.example` lists them). LangChain examples also need `OPENAI_API_KEY`.
+Requirements: Node.js 22.19+, and the provider credentials for the examples you run (`.env.example` lists them). LangChain examples also need `OPENAI_API_KEY`.
 
 ---
 

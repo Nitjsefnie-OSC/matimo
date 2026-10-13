@@ -6,7 +6,7 @@ import { checkBruVersion } from '../bru-utils.js';
 
 const logger = getGlobalMatimoLogger();
 
-/** Count .bru files recursively — compatible with Node 18+. */
+/** Count .bru files recursively — works on all supported Node versions. */
 async function countBruFilesRecursively(dir: string): Promise<number> {
   let count = 0;
   let entries: string[];
@@ -70,7 +70,7 @@ export default async function execute(params: Record<string, unknown>): Promise<
 
     logger.info('OpenAPI import completed');
 
-    // Count generated .bru files using a Node 18-compatible recursive walk
+    // Count generated .bru files using a portable recursive walk
     let requestsCreated = 0;
     try {
       requestsCreated = await countBruFilesRecursively(absoluteOutput);

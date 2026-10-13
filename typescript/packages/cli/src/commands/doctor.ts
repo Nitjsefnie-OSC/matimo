@@ -57,11 +57,11 @@ export async function doctorCommand(): Promise<void> {
   // ─── 1. Node.js version ────────────────────────────────────────────────
   console.info('Node.js:');
   const nodeVersion = process.versions.node;
-  const [major] = nodeVersion.split('.').map(Number);
+  const [major, minor] = nodeVersion.split('.').map(Number);
   check(
     `Node.js v${nodeVersion}`,
-    major >= 18,
-    `Node.js 18+ required. You are running ${nodeVersion}. Upgrade: https://nodejs.org`
+    major > 22 || (major === 22 && minor >= 19),
+    `Node.js 22.19+ required. You are running ${nodeVersion}. Upgrade: https://nodejs.org`
   );
   console.info('');
 

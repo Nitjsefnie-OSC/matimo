@@ -2,11 +2,11 @@
 
 ## Current Status
 
-**Latest Release**: **0.2.0** (TypeScript and Python): **🛡️ Secure by default** — DELETE and command tools ask a human, per-instance approval callbacks, MCP elicitation, a hash-chained audit log, and governance enforced identically by both SDKs. See [RELEASES.md](./RELEASES.md) and the [migration guide](./api-reference/POLICY_AND_LIFECYCLE.md#upgrading-to-020).
+**Latest Release**: **0.3.0** (TypeScript; Python stays at 0.2.0). Requires Node 22.19+ and patches the open audit findings. Previous: **0.2.0** (TypeScript and Python): **🛡️ Secure by default** — DELETE and command tools ask a human, per-instance approval callbacks, MCP elicitation, a hash-chained audit log, and governance enforced identically by both SDKs. See [RELEASES.md](./RELEASES.md) and the [migration guide](./api-reference/POLICY_AND_LIFECYCLE.md#upgrading-to-020).
 
 ### 🏆 Production Launch — General Availability
 
-Matimo 0.2.0 (TypeScript and Python) is **production-ready** with full TypeScript and Python SDK support, 129 tools across 10 native provider packages plus a governed 449-tool `@matimo/composio` catalog, enterprise-grade security, and comprehensive framework integrations.
+Matimo 0.3.0 (TypeScript) and 0.2.0 (Python) are **production-ready** with full TypeScript and Python SDK support, 129 tools across 10 native provider packages plus a governed 449-tool `@matimo/composio` catalog, enterprise-grade security, and comprehensive framework integrations.
 
 ✅ **v0.1.0 Stable — Completed Features**:
 
@@ -63,7 +63,7 @@ Matimo 0.2.0 (TypeScript and Python) is **production-ready** with full TypeScrip
 
 **TypeScript SDK** (v0.1.0 stable)
 - ✅ 2,412 tests, 95%+ coverage (branches: 87%, functions: 97%, lines: 95%)
-- ✅ Node.js 18+, 20+, 22+
+- ✅ Node.js 22.19+
 - ✅ `convertToolsToLangChain()` — LangChain integration
 - ✅ `MCPServer` — MCP stdio + HTTP server
 - ✅ pnpm workspaces, Jest, TypeScript strict mode

@@ -86,7 +86,7 @@ pnpm changelog:preview  # unreleased entries only
 ## Conventions
 
 - Conventional Commits: feat/fix/docs/style/refactor/perf/test/chore/ci/revert/example — enforced by commitlint + husky pre-commit.
-- TS: strict mode, ESM (`"type": "module"`), Node ≥18, pnpm ≥8.
+- TS: strict mode, ESM (`"type": "module"`), Node ≥22.19, pnpm ≥8.
 - Python: version pinned in `python/.python-version` (3.11); ruff for lint/format; mypy strict on `packages/core/src` only.
 - New provider package → mirror an existing one exactly (see `slack` or `github`) in both languages — use the `add-package` skill.
 - Every tool needs a risk classification (low/medium/high/critical) — see `docs/api-reference/POLICY_AND_LIFECYCLE.md`.

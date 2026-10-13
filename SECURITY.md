@@ -1,6 +1,6 @@
 # Security — Matimo
 
-How to report a vulnerability, what Matimo's governance layer protects against today, what it does not, and the rules contributors follow. Applies to `@matimo/*` 0.2.x (TypeScript) and `matimo` 0.2.x (Python).
+How to report a vulnerability, what Matimo's governance layer protects against today, what it does not, and the rules contributors follow. Applies to `@matimo/*` 0.3.x (TypeScript) and `matimo` 0.2.x (Python).
 
 ## Table of Contents
 

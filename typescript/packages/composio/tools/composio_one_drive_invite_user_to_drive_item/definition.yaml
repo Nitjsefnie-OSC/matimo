@@ -16,6 +16,13 @@ parameters:
       The Composio connected account ID for the ONE_DRIVE toolkit, scoped to the calling tenant. The
       "Connect ONE_DRIVE" flow must be completed before this tool will succeed.
     required: true
+  composio_toolkit_version:
+    type: string
+    description: >-
+      Composio toolkit version to execute against. Composio v3 defaults to the stale base version
+      00000000_00 when omitted, which can call upstream APIs that have since been removed (e.g. Jira
+      /search). Use "latest" or pin a dated version such as 20251027_00.
+    default: latest
   roles:
     type: array
     description: Specifies the roles to be granted to the recipients.
@@ -95,6 +102,7 @@ execution:
   body:
     user_id: '{composio_user_id}'
     connected_account_id: '{composio_connected_account_id}'
+    version: '{composio_toolkit_version}'
     arguments:
       _matimo_tool: composio_one_drive_invite_user_to_drive_item
       roles: '{roles}'
