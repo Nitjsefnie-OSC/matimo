@@ -203,6 +203,14 @@ describe('buildToolDefinition', () => {
     expect(def.execution.headers['x-api-key']).toBe('{COMPOSIO_API_KEY}');
     expect(def.execution.body.user_id).toBe('{composio_user_id}');
     expect(def.execution.body.connected_account_id).toBe('{composio_connected_account_id}');
+    // Composio v3 defaults to stale base version 00000000_00 unless `version` is sent.
+    expect((def.execution.body as Record<string, unknown>).version).toBe(
+      '{composio_toolkit_version}'
+    );
+    expect(
+      (def as unknown as { parameters: Record<string, { default?: string }> }).parameters
+        .composio_toolkit_version.default
+    ).toBe('latest');
     expect(def.execution.body.arguments).toEqual({
       _matimo_tool: 'composio_jira_get_issue',
       issue_id: '{issue_id}',
