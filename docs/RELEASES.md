@@ -1,3 +1,40 @@
+## v0.3.0 (TypeScript) - Node 22.19+ and Security Patches 🔒
+
+> **Release**: Raises the minimum Node version to 22.19 and clears the open `pnpm audit` findings, including three criticals. Python is unchanged and stays at `0.2.0`.
+
+**Released**: October 13, 2026
+**Scope**: `typescript/` - all 14 packages `0.2.0` → `0.3.0`. `python/` - no change.
+**Severity**: 🟡 **Minor bump with a breaking change** - Node 18 and 20 no longer work.
+
+---
+
+### ⚠️ **What changes when you upgrade**
+
+| Before | 0.3.0 |
+|--------|-------|
+| `engines.node` was `>=18` | `>=22.19.0`. `undici` 8, which carries the security fixes, requires it |
+| CI tested Node 18 and 20 | CI tests Node 22 and 24 |
+| `matimo doctor` accepted Node 18+ | It requires 22.19+ |
+
+Upgrade Node first (`node -v`), then `pnpm install`. Nothing in the tool, policy or approval APIs changed.
+
+### ✨ **Composio toolkit version**
+
+Every generated `@matimo/composio` tool now takes `composio_toolkit_version`, default `latest`, and sends it as `version`. Without it Composio v3 runs the stale base version `00000000_00`, which can call upstream APIs that have since been removed (for example Jira `/search`). Pin a dated version such as `20251027_00` to freeze behaviour.
+
+### 🔒 **Security**
+
+- `@modelcontextprotocol/sdk` `^1.31.0`: fixes an OAuth client sending credentials to an authorization server chosen by the MCP server.
+- Overrides now force patched versions of `proxy-addr`, `handlebars`, `undici` (8.11.2), `fast-uri`, `ip-address`, `hono`, `yaml`, `csv-parse` and `uuid` (14.x).
+- Still reported: `sprintf-js` (moderate, no patched release, reached through `mammoth`).
+- `yaml` and `csv-parse` are pinned by `@usebruno/cli`; the overrides lift them to 2.8 and 7 under it. Run a real Bruno collection after upgrading if you use `@matimo/bruno`.
+
+### 📚 **Documentation**
+
+Every Node requirement in the READMEs, getting-started pages and MCP guides now says 22.19+. The MCP Docker example uses `node:22-alpine`.
+
+---
+
 ## v0.2.0 (TypeScript and Python) - Governance by Default 🛡️
 
 > **Release**: Makes the core claim true: every tool call is governed, the same way, in both SDKs. DELETE and command tools ask a human before they run, approval callbacks belong to each instance, MCP asks the person behind the client instead of the model, `matimo_approve_tool` can no longer be used by an agent to approve its own tool, and every call ends in an audit event that can be written to a tamper-evident log. Both SDKs move to `0.2.0` together.

@@ -22,9 +22,11 @@ Give your agents **129 production-ready tools** to start (plus a governed 449-to
 
 New here? Read [Why Matimo OSS](why-matimo) and [what changed in 0.2.0](blog/2026-10-01-matimo-0-2-0-tool-governance).
 
-Complete documentation for Matimo **0.2.0** (TypeScript `@matimo/core` 0.2.0 and Python `matimo` 0.2.0).
+Complete documentation for Matimo **0.3.0** (TypeScript `@matimo/core` 0.3.0 and Python `matimo` 0.2.0).
 
-> **New in 0.2.0 — secure by default.** HTTP DELETE and command tools ask a human before every call, each instance has its own approval callback (`onApproval`), MCP servers ask the client's user through elicitation, every call emits events you can keep in a tamper-evident audit log, and both SDKs enforce the same rules. Upgrading? Read the [migration guide](./api-reference/POLICY_AND_LIFECYCLE.md#upgrading-to-020).
+> **New in 0.3.0:** Node 22.19+ is now required, and the open security advisories are patched. See the [release notes](./RELEASES.md).
+>
+> **Since 0.2.0 — secure by default.** HTTP DELETE and command tools ask a human before every call, each instance has its own approval callback (`onApproval`), MCP servers ask the client's user through elicitation, every call emits events you can keep in a tamper-evident audit log, and both SDKs enforce the same rules. Upgrading? Read the [migration guide](./api-reference/POLICY_AND_LIFECYCLE.md#upgrading-to-020).
 
 ---
 
