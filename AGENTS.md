@@ -41,7 +41,7 @@ Never run `npm install` inside `typescript/` (it uses `pnpm-lock.yaml`) or `pnpm
 ## Conventions an agent must follow
 
 - Conventional Commits, lower-case type: `feat, fix, docs, style, refactor, perf, test, chore, ci, revert, example`. Enforced by a commitlint pre-commit hook (husky) — don't bypass with `--no-verify`.
-- TypeScript: strict mode, ESM (`"type": "module"`), Node ≥18, pnpm ≥8.
+- TypeScript: strict mode, ESM (`"type": "module"`), Node ≥22.19, pnpm ≥8.
 - Python: version pinned in `python/.python-version`; ruff for lint/format; mypy strict on `packages/core/src`.
 - Every tool (built-in or agent-created) needs an explicit risk classification (`low`/`medium`/`high`/`critical`) in its YAML definition — see [docs/api-reference/POLICY_AND_LIFECYCLE.md](./docs/api-reference/POLICY_AND_LIFECYCLE.md).
 - New provider package → mirror an existing one exactly (`slack` or `github` are the reference implementations) in **both** languages. Don't let TS and Python drift — ship new features to both unless told otherwise.

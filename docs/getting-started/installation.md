@@ -6,7 +6,7 @@ Matimo is available for both **TypeScript/Node.js** and **Python**. Pick the lan
 
 | SDK | Package manager | Min version |
 |-----|----------------|-------------|
-| TypeScript | npm / pnpm | Node.js ≥ 18, pnpm ≥ 8.15 |
+| TypeScript | npm / pnpm | Node.js ≥ 22.19, pnpm ≥ 8.15 |
 | Python | pip / uv | Python ≥ 3.11 |
 
 ---
@@ -204,7 +204,7 @@ uv pip show matimo
 node --version  # Should be v18.0.0 or higher
 ```
 
-If lower, install Node.js 18+ from [nodejs.org](https://nodejs.org/)
+If lower, install Node.js 22.19+ from [nodejs.org](https://nodejs.org/)
 
 ### pnpm Installation
 
@@ -283,7 +283,7 @@ See the [Security Policy](../../SECURITY.md) and [Policy Engine](../api-referenc
 
 ## Quick Verification Checklist
 
-- [ ] Node.js v18+ installed
+- [ ] Node.js v22.19+ installed
 - [ ] pnpm v8.15+ installed
 - [ ] Repository cloned
 - [ ] `pnpm install` completed

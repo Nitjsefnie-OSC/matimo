@@ -22,7 +22,7 @@ The agent writes tool YAML files directly. It does **not** use `matimo_create_to
 
 ## Prerequisites
 
-- Node.js ≥ 18 and pnpm 8 (`cd typescript && pnpm install && pnpm build`)
+- Node.js ≥ 22.19 and pnpm 8 (`cd typescript && pnpm install && pnpm build`)
 - Python 3.11 and [uv](https://docs.astral.sh/uv/) (`cd python && make install`)
 - VS Code with GitHub Copilot Chat, with agent mode and MCP enabled
 

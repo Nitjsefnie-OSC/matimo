@@ -63,7 +63,7 @@ Matimo 0.2.0 (TypeScript and Python) is **production-ready** with full TypeScrip
 
 **TypeScript SDK** (v0.1.0 stable)
 - ✅ 2,412 tests, 95%+ coverage (branches: 87%, functions: 97%, lines: 95%)
-- ✅ Node.js 18+, 20+, 22+
+- ✅ Node.js 22.19+
 - ✅ `convertToolsToLangChain()` — LangChain integration
 - ✅ `MCPServer` — MCP stdio + HTTP server
 - ✅ pnpm workspaces, Jest, TypeScript strict mode

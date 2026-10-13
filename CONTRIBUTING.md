@@ -150,7 +150,7 @@ Run every `pnpm` command from `typescript/` and every `make`/`uv` command from `
 
 ### Prerequisites
 
-- Node.js v18+ installed
+- Node.js v22.19+ installed
 - pnpm 8: `npm install -g pnpm@8`
 - Python 3.11 and [uv](https://docs.astral.sh/uv/)
 - Git configured

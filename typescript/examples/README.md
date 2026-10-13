@@ -28,7 +28,7 @@ pnpm slack:decorator            # decorator pattern
 pnpm slack:langchain            # LangChain agent (needs OPENAI_API_KEY)
 ```
 
-Requirements: Node.js 18+, and the provider credentials for the examples you run (`.env.example` lists them). LangChain examples also need `OPENAI_API_KEY`.
+Requirements: Node.js 22.19+, and the provider credentials for the examples you run (`.env.example` lists them). LangChain examples also need `OPENAI_API_KEY`.
 
 ---
 

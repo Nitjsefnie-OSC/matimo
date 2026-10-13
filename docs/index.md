@@ -31,7 +31,7 @@ Complete documentation for Matimo **0.2.0** (TypeScript `@matimo/core` 0.2.0 and
 ## 🚀 Choose Your SDK
 
 ### 🟦 **TypeScript / Node.js**
-- Node.js 18+, npm/pnpm
+- Node.js 22.19+, npm/pnpm
 - ESM, full type support
 - Enforced coverage floors (95% lines)
 - **[Start with TypeScript](#typescript-getting-started)**
@@ -63,7 +63,7 @@ Complete documentation for Matimo **0.2.0** (TypeScript `@matimo/core` 0.2.0 and
 ### 📦 **Installation & Requirements**
 
 - **[Installation](./getting-started/installation.md)** — Detailed setup for both SDKs
-  - TypeScript (Node.js 18+) and Python (3.11+) requirements
+  - TypeScript (Node.js 22.19+) and Python (3.11+) requirements
   - From npm/pip (recommended) or from source
   - Troubleshooting & environment setup
   - Provider authentication via OAuth2

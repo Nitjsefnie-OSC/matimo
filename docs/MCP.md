@@ -167,7 +167,7 @@ That's it. All installed `matimo-*` tools are auto-discovered and exposed over s
 
 ### Prerequisites
 
-- **Node.js 18+** — [Download](https://nodejs.org/)
+- **Node.js 22.19+** — [Download](https://nodejs.org/)
 - **npm or pnpm** — comes with Node.js
 
 ### Install packages
@@ -780,7 +780,7 @@ Use certificates from Let's Encrypt, your cloud provider, or your internal CA.
 ### Docker
 
 ```dockerfile
-FROM node:20-alpine
+FROM node:22-alpine
 
 # openssl needed for self-signed cert generation
 RUN apk add --no-cache openssl
