@@ -1,0 +1,115 @@
+# Manual CI wrapper for the Nitjsefnie-OSC fork of matimo.
+#
+# Generic on purpose: it takes any ref in this repository via `target_ref` and
+# runs the repository's own PR-depth gates, mirroring the jobs of
+# .github/workflows/ci.yml and .github/workflows/tool-validation.yml on one
+# matrix cell (Node 22, Python 3.11) -- the matrix spread is upstream's
+# concern. No per-branch logic belongs in this file. The provenance step is a
+# block scalar on purpose: a plain scalar containing colon-space makes the
+# workflow parse but the run report zero jobs.
+
+name: OSC Manual CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_ref:
+        description: "Branch, tag or 40-character commit SHA in this repository to test"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: PR-depth gates (TypeScript, Python, tool validation)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout target_ref
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.target_ref }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          checked_out_sha="$(git rev-parse HEAD)"
+          if [[ ! "$checked_out_sha" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::git rev-parse HEAD did not produce a 40-character commit SHA: $checked_out_sha"
+            exit 1
+          fi
+          echo "Tested commit: $checked_out_sha (resolved from target_ref '${{ inputs.target_ref }}')"
+          git log -1 --format='%H%n%an%n%s'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+        working-directory: typescript
+
+      - name: Validate tools
+        run: pnpm validate-tools
+        working-directory: typescript
+
+      - name: Build
+        run: pnpm build
+        working-directory: typescript
+
+      - name: Run full test suite
+        run: pnpm test
+        working-directory: typescript
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v2
+
+      - name: Lint Python (ruff), as ci.yml gates it
+        run: uv run ruff check packages/
+        working-directory: python
+
+      - name: Type check core src (mypy), as ci.yml gates it
+        run: uv run mypy src/
+        working-directory: python/packages/core
+
+      - name: Test core with coverage floor, as ci.yml gates it
+        run: uv run pytest packages/core/tests/ --cov=packages/core/src/matimo --cov-report=xml --cov-fail-under=95 -q --tb=short
+        working-directory: python
+
+      - name: Test provider packages, as ci.yml gates it
+        run: uv run pytest packages/ --ignore=packages/core -q --tb=short
+        working-directory: python
+
+      - name: Validate Python tools
+        run: uv run python scripts/validate_tools.py
+        working-directory: python
