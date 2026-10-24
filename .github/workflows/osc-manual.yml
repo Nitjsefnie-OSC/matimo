@@ -74,6 +74,10 @@ jobs:
         run: pnpm install
         working-directory: typescript
 
+      - name: Lint, as ci.yml gates it
+        run: pnpm lint
+        working-directory: typescript
+
       - name: Validate tools
         run: pnpm validate-tools
         working-directory: typescript
@@ -84,6 +88,10 @@ jobs:
 
       - name: Run full test suite
         run: pnpm test
+        working-directory: typescript
+
+      - name: Test with coverage floors, as ci.yml gates it
+        run: pnpm test:coverage
         working-directory: typescript
 
       - name: Setup Python
